@@ -1,5 +1,6 @@
 package com.example.hauntedhalifax.navigation
 
+import android.R.attr.contentDescription
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,7 +19,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.hauntedhalifax.ui.theme.LightGreen
 import com.example.hauntedhalifax.ui.theme.NavyBlue
 import com.example.hauntedhalifax.ui.map.MapScreen
+import com.example.hauntedhalifax.ui.theme.BodyFont
 import com.example.hauntedhalifax.ui.theme.Creepy
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Map
+
 
 
 //This OptIn is for the TopAppBar.
@@ -48,10 +53,18 @@ fun Navigation() {
                     selected = true,
                     onClick = { },
                     icon = {
-//                        Icon(...)
+                        Icon(
+                            imageVector = Icons.Default.Map,
+                            contentDescription = "Map",
+                            tint = LightGreen
+                        )
                     },
                     label = {
-                        Text("Map")
+                        Text(
+                            text = "Map",
+                            color = LightGreen,
+                            fontFamily = BodyFont
+                        )
                     }
                 )
             }
