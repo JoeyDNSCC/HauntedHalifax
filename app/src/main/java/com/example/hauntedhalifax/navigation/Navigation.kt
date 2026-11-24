@@ -11,12 +11,14 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.hauntedhalifax.ui.theme.LightGreen
 import com.example.hauntedhalifax.ui.theme.NavyBlue
 import com.example.hauntedhalifax.ui.map.MapScreen
+import com.example.hauntedhalifax.ui.theme.Creepy
 
 
 //This OptIn is for the TopAppBar.
@@ -31,7 +33,12 @@ fun Navigation() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Haunted Halifax")
+                    Text(
+                        text = "Haunted Halifax",
+                        color = LightGreen,
+                        fontFamily = Creepy,
+                        fontSize = 28.sp
+                    )
                 }
             )
         },
