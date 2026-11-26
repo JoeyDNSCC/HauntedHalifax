@@ -99,7 +99,7 @@ fun Navigation(viewModel: MainViewModel) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("Map") {
-                MapScreen(location = viewModel.location) // we can instantiate this earlier if we need it for anything else
+                MapScreen(viewModel) // we can instantiate this earlier if we need it for anything else
             }
         }
     }
