@@ -1,4 +1,4 @@
-package com.example.hauntedhalifax.navigation
+package com.example.hauntedhalifax.components
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -23,7 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.hauntedhalifax.MainViewModel
-import com.example.hauntedhalifax.ui.map.MapScreen
+import com.example.hauntedhalifax.ui.screens.MapScreen
 import com.example.hauntedhalifax.ui.theme.BodyFont
 import com.example.hauntedhalifax.ui.theme.Creepy
 import com.example.hauntedhalifax.ui.theme.LightGreen
@@ -56,8 +56,6 @@ fun Navigation(viewModel: MainViewModel) {
         )
     }
 
-    // End: Ask permission to get device location.
-    val location = viewModel.location
     Scaffold(
         topBar = {
             TopAppBar(
@@ -101,7 +99,7 @@ fun Navigation(viewModel: MainViewModel) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("Map") {
-                MapScreen()
+                MapScreen(location = viewModel.location) // we can instantiate this earlier if we need it for anything else
             }
         }
     }
