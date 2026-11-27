@@ -40,7 +40,7 @@ fun MapScreen(viewModel: MainViewModel) {
             mapViewportState = rememberMapViewportState {
                 setCameraOptions {
                     zoom(12.0)
-                    center(Point.fromLngLat(lng, lat))
+                    center(Point.fromLngLat(location.longitude, location.latitude))
                     pitch(0.0)
                     bearing(0.0)
                 }
@@ -61,7 +61,7 @@ fun MapScreen(viewModel: MainViewModel) {
             },
         ) {
             Marker(
-                point = Point.fromLngLat(lng, lat),
+                point = Point.fromLngLat(location.longitude, location.latitude),
                 text = "You are Here",
                 color = Color.Magenta
             )
