@@ -30,42 +30,41 @@ fun MapScreen(viewModel: MainViewModel) {
 
     val location = viewModel.location
 
-    //defaults if null
-    val lng = location?.longitude ?: -63.5752
-    val lat = location?.latitude ?: 44.6488
-
-
-    //
-    MapboxMap(
-        Modifier.fillMaxSize(),
-        mapViewportState = rememberMapViewportState {
-            setCameraOptions {
-                zoom(12.0)
-                center(Point.fromLngLat(lng, lat))
-                pitch(0.0)
-                bearing(0.0)
-            }
-        },
-        scaleBar = {
-            ScaleBar(Modifier.padding(top = 60.dp))
-        },
-        logo = {
-            Logo(Modifier.padding(bottom = 40.dp))
-        },
-        attribution = {
-            Attribution(Modifier.padding(bottom = 40.dp))
-        },
-        style = {
-            MapStyle(
-                style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+    if (location == null) {
+        Text("Loading...")
+    } 
+    else {
+        //
+        MapboxMap(
+            Modifier.fillMaxSize(),
+            mapViewportState = rememberMapViewportState {
+                setCameraOptions {
+                    zoom(12.0)
+                    center(Point.fromLngLat(lng, lat))
+                    pitch(0.0)
+                    bearing(0.0)
+                }
+            },
+            scaleBar = {
+                ScaleBar(Modifier.padding(top = 60.dp))
+            },
+            logo = {
+                Logo(Modifier.padding(bottom = 40.dp))
+            },
+            attribution = {
+                Attribution(Modifier.padding(bottom = 40.dp))
+            },
+            style = {
+                MapStyle(
+                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+                )
+            },
+        ) {
+            Marker(
+                point = Point.fromLngLat(lng, lat),
+                text = "You are Here",
+                color = Color.Magenta
             )
-        },
-    ) {
-        Marker(
-            point = Point.fromLngLat(lng, lat),
-            text = "You are Here",
-            color = Color.Magenta
-        )
+        }
     }
-
 }
