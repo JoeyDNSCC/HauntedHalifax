@@ -21,6 +21,8 @@ import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportS
 import com.mapbox.maps.extension.compose.annotation.Marker
 import com.mapbox.maps.plugin.attribution.Attribution
 import com.mapbox.maps.plugin.scalebar.ScaleBar
+import com.mapbox.maps.Style
+import com.mapbox.maps.extension.compose.style.MapStyle
 
 @OptIn(MapboxExperimental::class)
 @Composable
@@ -30,15 +32,15 @@ fun MapScreen(viewModel: MainViewModel) {
 
     if (location == null) {
         Text("Loading...")
-    }
-
-    else if (location != null) {
+    } 
+    else {
+        //
         MapboxMap(
             Modifier.fillMaxSize(),
             mapViewportState = rememberMapViewportState {
                 setCameraOptions {
                     zoom(12.0)
-                    center(Point.fromLngLat(location.longitude, location.latitude))
+                    center(Point.fromLngLat(lng, lat))
                     pitch(0.0)
                     bearing(0.0)
                 }
@@ -51,14 +53,18 @@ fun MapScreen(viewModel: MainViewModel) {
             },
             attribution = {
                 Attribution(Modifier.padding(bottom = 40.dp))
-            }
+            },
+            style = {
+                MapStyle(
+                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+                )
+            },
         ) {
             Marker(
-                point = Point.fromLngLat(location.longitude, location.latitude),
+                point = Point.fromLngLat(lng, lat),
                 text = "You are Here",
                 color = Color.Magenta
             )
         }
     }
-
 }
