@@ -19,6 +19,7 @@ import com.mapbox.maps.MapboxExperimental
 import com.mapbox.maps.extension.compose.MapboxMap
 import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportState
 import com.mapbox.maps.extension.compose.annotation.Marker
+import com.mapbox.maps.extension.compose.style.standard.MapboxStandardStyle
 import com.mapbox.maps.plugin.attribution.Attribution
 import com.mapbox.maps.plugin.scalebar.ScaleBar
 
@@ -41,6 +42,9 @@ fun MapScreen(viewModel: MainViewModel) {
                     pitch(0.0)
                     bearing(0.0)
                 }
+            },
+            style = {
+                MapboxStandardStyle() // still reading how to customize this
             },
             scaleBar = {
                 ScaleBar(Modifier.padding(top = 60.dp))
