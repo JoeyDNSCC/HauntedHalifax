@@ -31,13 +31,12 @@ fun MapScreen(viewModel: MainViewModel) {
     if (location == null) {
         Text("Loading...")
     }
-
-    else if (location != null) {
+    else {
         MapboxMap(
             Modifier.fillMaxSize(),
             mapViewportState = rememberMapViewportState {
                 setCameraOptions {
-                    zoom(12.0)
+                    zoom(15.0)
                     center(Point.fromLngLat(location.longitude, location.latitude))
                     pitch(0.0)
                     bearing(0.0)
