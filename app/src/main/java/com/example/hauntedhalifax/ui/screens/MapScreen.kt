@@ -21,6 +21,8 @@ import com.mapbox.maps.extension.compose.animation.viewport.rememberMapViewportS
 import com.mapbox.maps.extension.compose.annotation.Marker
 import com.mapbox.maps.plugin.attribution.Attribution
 import com.mapbox.maps.plugin.scalebar.ScaleBar
+import com.mapbox.maps.Style
+import com.mapbox.maps.extension.compose.style.MapStyle
 
 @OptIn(MapboxExperimental::class)
 @Composable
@@ -32,6 +34,8 @@ fun MapScreen(viewModel: MainViewModel) {
     val lng = location?.longitude ?: -63.5752
     val lat = location?.latitude ?: 44.6488
 
+
+    //
     MapboxMap(
         Modifier.fillMaxSize(),
         mapViewportState = rememberMapViewportState {
@@ -50,7 +54,12 @@ fun MapScreen(viewModel: MainViewModel) {
         },
         attribution = {
             Attribution(Modifier.padding(bottom = 40.dp))
-        }
+        },
+        style = {
+            MapStyle(
+                style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+            )
+        },
     ) {
         Marker(
             point = Point.fromLngLat(lng, lat),
