@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.hauntedhalifax.MainViewModel
+import com.example.hauntedhalifax.ui.theme.LightGreen
+import com.example.hauntedhalifax.ui.theme.NavyBlue
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
 import com.mapbox.maps.extension.compose.MapboxMap
@@ -63,7 +65,9 @@ fun MapScreen(viewModel: MainViewModel) {
             Marker(
                 point = Point.fromLngLat(location.longitude, location.latitude),
                 text = "You are Here",
-                color = Color.Magenta
+                color = NavyBlue,
+                stroke = LightGreen,
+                innerColor = LightGreen
             )
         }
     }
