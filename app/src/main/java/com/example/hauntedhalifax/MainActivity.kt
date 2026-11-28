@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.hauntedhalifax.components.Navigation
 import com.example.hauntedhalifax.ui.theme.HauntedHalifaxTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,32 +20,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val mainViewModel: MainViewModel = viewModel()
             HauntedHalifaxTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                Navigation(mainViewModel)
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hi $name!",
-        //TEST COMMENT
-        modifier = modifier,
 
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HauntedHalifaxTheme {
-        Greeting("Android")
-    }
-}

@@ -44,6 +44,19 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.10.2")
+    // Location services
+    implementation("com.google.android.gms:play-services-location:21.4.0")
+
+    //mapbox
+    implementation("com.mapbox.maps:android-ndk27:11.36.0")
+    // mapbox with jetpack compose
+    implementation("com.mapbox.extension:maps-compose-ndk27:11.36.0")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
@@ -51,4 +64,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    //Dependency needed for default Icons
+    implementation("androidx.compose.material:material-icons-extended")
+
 }
