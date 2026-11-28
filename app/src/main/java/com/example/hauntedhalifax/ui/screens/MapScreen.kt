@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.hauntedhalifax.MainViewModel
+import com.example.hauntedhalifax.ui.theme.LightGreen
+import com.example.hauntedhalifax.ui.theme.NavyBlue
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapboxExperimental
 import com.mapbox.maps.extension.compose.MapboxMap
@@ -39,7 +41,7 @@ fun MapScreen(viewModel: MainViewModel) {
             Modifier.fillMaxSize(),
             mapViewportState = rememberMapViewportState {
                 setCameraOptions {
-                    zoom(12.0)
+                    zoom(15.0)
                     center(Point.fromLngLat(location.longitude, location.latitude))
                     pitch(0.0)
                     bearing(0.0)
@@ -54,16 +56,18 @@ fun MapScreen(viewModel: MainViewModel) {
             attribution = {
                 Attribution(Modifier.padding(bottom = 40.dp))
             },
-//            style = {
-//                MapStyle(
-//                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
-//                )
-//            },
+            style = {
+                MapStyle(
+                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+                )
+            },
         ) {
             Marker(
                 point = Point.fromLngLat(location.longitude, location.latitude),
                 text = "You are Here",
-                color = Color.Magenta
+                color = NavyBlue,
+                stroke = LightGreen,
+                innerColor = LightGreen
             )
         }
     }
