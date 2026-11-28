@@ -54,11 +54,11 @@ fun MapScreen(viewModel: MainViewModel) {
             attribution = {
                 Attribution(Modifier.padding(bottom = 40.dp))
             },
-            style = {
-                MapStyle(
-                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
-                )
-            },
+//            style = {
+//                MapStyle(
+//                    style = "mapbox://styles/mattbutch/cmwyzhrbm00sh01rz7fg95iqb"
+//                )
+//            },
         ) {
             Marker(
                 point = Point.fromLngLat(location.longitude, location.latitude),
